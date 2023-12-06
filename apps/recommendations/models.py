@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+
 
 from django.db import models
 from django.db.models import Q
@@ -58,7 +58,7 @@ class RecommendationManager(models.Manager):
             grouped_recs[rec.recommendation].recs.append(rec)
 
         sorted_grouped_recs = sorted(
-            grouped_recs.values(), key=lambda x: -x.weight)
+            list(grouped_recs.values()), key=lambda x: -x.weight)
 
         return sorted_grouped_recs[:30]
 

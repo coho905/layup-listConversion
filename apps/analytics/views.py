@@ -106,7 +106,7 @@ def home(request):
         year_string = username.split('.')[-1]
         c[year_string] += 1
     class_breakdown = sorted(
-        [(year, count,) for year, count in c.items() if len(year) == 2]
+        [(year, count,) for year, count in list(c.items()) if len(year) == 2]
     )
 
     recommendations_last_updated = []

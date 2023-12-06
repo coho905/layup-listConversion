@@ -61,8 +61,8 @@ def crawl_timetable(term):
     assert len(tds) % num_columns == 0
 
     td_generator = (td for td in tds)
-    for _ in xrange(len(tds) / num_columns):
-        tds = [next(td_generator) for _ in xrange(num_columns)]
+    for _ in range(len(tds) / num_columns):
+        tds = [next(td_generator) for _ in range(num_columns)]
 
         number, subnumber = parse_number_and_subnumber(tds[3].get_text())
         crosslisted_courses = _parse_crosslisted_courses(

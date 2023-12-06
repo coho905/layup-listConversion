@@ -1,7 +1,7 @@
-from __future__ import unicode_literals
+
 from django.db import models
 from django.db.models import Q
-from course_offering import CourseOffering
+from .course_offering import CourseOffering
 from django.core.urlresolvers import reverse
 from lib.constants import CURRENT_TERM
 from lib.terms import numeric_value_of_term
@@ -25,7 +25,7 @@ class CourseManager(models.Manager):
         query_data = {
             k: v.strip()
             for k, v in self.course_search_regex.match(
-                query).groupdict().iteritems()
+                query).groupdict().items()
         }
 
         department_or_query = query_data["department_or_query"]

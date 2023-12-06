@@ -106,10 +106,10 @@ def crawl_courses_from_program_page_url(url, program_code):
     ]
     course_urls = sorted(
         set(url for url in linked_urls if _is_course_url(url)))
-    return filter(None, [
+    return [_f for _f in [
         _crawl_course_data(course_url, program_code)
         for course_url in course_urls
-    ])
+    ] if _f]
 
 
 def _is_course_url(candidate_url):

@@ -223,7 +223,7 @@ def course_detail(request, course_id):
         try:
             result.result()
         except:
-            print('Error publishing view activity for ', course_id)
+            print(('Error publishing view activity for ', course_id))
     except Course.DoesNotExist:
         return HttpResponseNotFound('<h1>Page not found</h1>')
 
@@ -385,7 +385,7 @@ def medians(request, course_id):
                     m['numeric_value'] for m in term_medians
                 ) / len(term_medians),
                 'courses': term_medians,
-            } for term, term_medians in medians_by_term.iteritems()
+            } for term, term_medians in medians_by_term.items()
         ],
         key=lambda x: numeric_value_of_term(x['term']),
         reverse=True,

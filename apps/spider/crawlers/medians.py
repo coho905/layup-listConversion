@@ -1,5 +1,5 @@
 import sys
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 from bs4 import BeautifulSoup
 
 from apps.web.models import Course, CourseMedian
@@ -103,7 +103,7 @@ def import_median(median_data):
             subnumber=median_data["course"]["subnumber"],
         )
     except Course.DoesNotExist:
-        print "Could not find course for {}".format(median_data["course"])
+        print("Could not find course for {}".format(median_data["course"]))
         return
     median, _ = CourseMedian.objects.update_or_create(
         course=course,

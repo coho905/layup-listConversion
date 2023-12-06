@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
-import HTMLParser
+import html.parser
 import json
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
-html_parser = HTMLParser.HTMLParser()
+html_parser = html.parser.HTMLParser()
 
 DEPARTMENT_CORRECTIONS = {
     "M&SS": "QSS",
@@ -39,4 +39,4 @@ def parse_number_and_subnumber(numbers_text):
 
 def retrieve_soup(url, data=None, preprocess=lambda x: x):
     return BeautifulSoup(
-        preprocess(urllib2.urlopen(url, data=data).read()), "html.parser")
+        preprocess(urllib.request.urlopen(url, data=data).read()), "html.parser")
